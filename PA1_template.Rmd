@@ -129,14 +129,11 @@ print.xtable(xtable(table_mean_median_full,
 ### 1. Create a new factor variable in the dataset with two levels -- "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 ```{r}
 table_nonNA$date <- as.Date(table_nonNA$date)
-table_nonNA$weeks <-  lapply(table_nonNA$date, weekdays)
-table_nonNA$weeks <- unlist(table_nonNA$weeks)
-table_nonNA$weeks <- as.character(table_nonNA$weeks)
+table_nonNA$weeks <-  sapply(table_nonNA$date, weekdays)
 
 ## identifying the days of the week (both "weekend" and "weekday")
-table_nonNA$weekdays <- lapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == "Sunday")|(table_nonNA$weeks[x] == "Saturday")) "weekend" else "weekday" })
+table_nonNA$weekdays <- sapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == "Sunday")|(table_nonNA$weeks[x] == "Saturday")) "weekend" else "weekday" })
 
-table_nonNA$weekdays <- unlist(table_nonNA$weekdays)
 table_nonNA$weekdays <- as.factor(table_nonNA$weekdays)
 
 ## split table by "weekend" and "weekday"

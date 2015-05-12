@@ -99,7 +99,7 @@ print.xtable(xtable(table_mean_median,
              html.table.attributes=&quot;width= 400&quot;,
              type = &quot;html&quot;)</code></pre>
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 19:06:04 2015 -->
+<!-- Tue May 12 22:10:58 2015 -->
 <table width="400">
 <caption align="top">
 The table includes days with NA-data (marked ‘–’)
@@ -1048,7 +1048,7 @@ print.xtable(xtable(table_mean_median_full,
              html.table.attributes=&quot;width= 400&quot;, 
              type = &quot;html&quot;)</code></pre>
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 19:06:05 2015 -->
+<!-- Tue May 12 22:10:58 2015 -->
 <table width="400">
 <caption align="top">
 The table with the missing data filled in
@@ -1929,14 +1929,11 @@ median_steps
 <div id="create-a-new-factor-variable-in-the-dataset-with-two-levels-weekday-and-weekend-indicating-whether-a-given-date-is-a-weekday-or-weekend-day." class="section level3">
 <h3>1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.</h3>
 <pre class="r"><code>table_nonNA$date &lt;- as.Date(table_nonNA$date)
-table_nonNA$weeks &lt;-  lapply(table_nonNA$date, weekdays)
-table_nonNA$weeks &lt;- unlist(table_nonNA$weeks)
-table_nonNA$weeks &lt;- as.character(table_nonNA$weeks)
+table_nonNA$weeks &lt;-  sapply(table_nonNA$date, weekdays)
 
 ## identifying the days of the week (both &quot;weekend&quot; and &quot;weekday&quot;)
-table_nonNA$weekdays &lt;- lapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == &quot;Sunday&quot;)|(table_nonNA$weeks[x] == &quot;Saturday&quot;)) &quot;weekend&quot; else &quot;weekday&quot; })
+table_nonNA$weekdays &lt;- sapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == &quot;Sunday&quot;)|(table_nonNA$weeks[x] == &quot;Saturday&quot;)) &quot;weekend&quot; else &quot;weekday&quot; })
 
-table_nonNA$weekdays &lt;- unlist(table_nonNA$weekdays)
 table_nonNA$weekdays &lt;- as.factor(table_nonNA$weekdays)
 
 ## split table by &quot;weekend&quot; and &quot;weekday&quot;

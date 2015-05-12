@@ -46,7 +46,7 @@ print.xtable(xtable(table_mean_median,
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 19:06:04 2015 -->
+<!-- Tue May 12 22:10:58 2015 -->
 <table width= 400>
 <caption align="top"> The table includes days with NA-data (marked '--') </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
@@ -203,7 +203,7 @@ print.xtable(xtable(table_mean_median_full,
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 19:06:05 2015 -->
+<!-- Tue May 12 22:10:58 2015 -->
 <table width= 400>
 <caption align="top"> The table with the missing data filled in </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
@@ -277,14 +277,11 @@ print.xtable(xtable(table_mean_median_full,
 
 ```r
 table_nonNA$date <- as.Date(table_nonNA$date)
-table_nonNA$weeks <-  lapply(table_nonNA$date, weekdays)
-table_nonNA$weeks <- unlist(table_nonNA$weeks)
-table_nonNA$weeks <- as.character(table_nonNA$weeks)
+table_nonNA$weeks <-  sapply(table_nonNA$date, weekdays)
 
 ## identifying the days of the week (both "weekend" and "weekday")
-table_nonNA$weekdays <- lapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == "Sunday")|(table_nonNA$weeks[x] == "Saturday")) "weekend" else "weekday" })
+table_nonNA$weekdays <- sapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == "Sunday")|(table_nonNA$weeks[x] == "Saturday")) "weekend" else "weekday" })
 
-table_nonNA$weekdays <- unlist(table_nonNA$weekdays)
 table_nonNA$weekdays <- as.factor(table_nonNA$weekdays)
 
 ## split table by "weekend" and "weekday"
