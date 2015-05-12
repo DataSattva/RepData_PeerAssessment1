@@ -41,12 +41,13 @@ print.xtable(xtable(table_mean_median,
                     caption = "The table includes days with NA-data (marked '--')", align = "cccc"),
              NA.string = "--",
              caption.placement = "top",
+             html.table.attributes="width= 400",
              type = "html")
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 18:48:43 2015 -->
-<table border=1>
+<!-- Tue May 12 18:50:55 2015 -->
+<table width= 400>
 <caption align="top"> The table includes days with NA-data (marked '--') </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
   <tr> <td align="center"> 1 </td> <td align="center"> 2012-10-01 </td> <td align="center"> -- </td> <td align="center"> -- </td> </tr>
@@ -202,7 +203,7 @@ print.xtable(xtable(table_mean_median_full,
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 18:48:43 2015 -->
+<!-- Tue May 12 18:50:55 2015 -->
 <table width= 400>
 <caption align="top"> The table with the missing data filled in </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
