@@ -55,7 +55,7 @@ table_interval <- table_nonNA %>%
 ## plot
 plot(table_interval$interval, table_interval$mean_steps,
      type = "l", 
-     col = "blue",
+     col = "#2d83fd",
      main = "5-minute interval and the average number of steps taken (missing NA)",
      ylab = "Steps taken (averaged across all days)", 
      xlab = "5-minute interval")

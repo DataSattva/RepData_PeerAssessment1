@@ -46,7 +46,7 @@ print.xtable(xtable(table_mean_median,
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 18:50:55 2015 -->
+<!-- Tue May 12 19:06:04 2015 -->
 <table width= 400>
 <caption align="top"> The table includes days with NA-data (marked '--') </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
@@ -125,7 +125,7 @@ table_interval <- table_nonNA %>%
 ## plot
 plot(table_interval$interval, table_interval$mean_steps,
      type = "l", 
-     col = "blue",
+     col = "#2d83fd",
      main = "5-minute interval and the average number of steps taken (missing NA)",
      ylab = "Steps taken (averaged across all days)", 
      xlab = "5-minute interval")
@@ -203,7 +203,7 @@ print.xtable(xtable(table_mean_median_full,
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 18:50:55 2015 -->
+<!-- Tue May 12 19:06:05 2015 -->
 <table width= 400>
 <caption align="top"> The table with the missing data filled in </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
