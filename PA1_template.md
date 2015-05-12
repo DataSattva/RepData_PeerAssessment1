@@ -18,6 +18,7 @@ steps_total <- tapply(table_nonNA$steps, table_nonNA$date, sum)
 par(mfrow = c(1, 1))
 hist(steps_total, 
      main = "Histogram of the total number of steps taken each day (missing NA)", 
+     col = "#fef0d9",
      xlab = "Number of steps")
 ```
 
@@ -40,13 +41,13 @@ print.xtable(xtable(table_mean_median,
                     caption = "The table includes days with NA-data (marked '--')", align = "cccc"),
              NA.string = "--",
              caption.placement = "top",
-             html.table.attributes="width= 400, border = 2", 
+             ## html.table.attributes="width= 400, border = 2", 
              type = "html")
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 17:48:45 2015 -->
-<table width= 400, border = 2>
+<!-- Tue May 12 18:36:53 2015 -->
+<table border=1>
 <caption align="top"> The table includes days with NA-data (marked '--') </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
   <tr> <td align="center"> 1 </td> <td align="center"> 2012-10-01 </td> <td align="center"> -- </td> <td align="center"> -- </td> </tr>
@@ -123,7 +124,8 @@ table_interval <- table_nonNA %>%
       summarize(mean_steps = mean(steps, na.rm = TRUE)) 
 ## plot
 plot(table_interval$interval, table_interval$mean_steps,
-     type = "l",
+     type = "l", 
+     col = "blue",
      main = "5-minute interval and the average number of steps taken (missing NA)",
      ylab = "Steps taken (averaged across all days)", 
      xlab = "5-minute interval")
@@ -175,7 +177,10 @@ table_full$steps[is.na(table$steps)] <- data_vector
 ```r
 steps_total <- tapply(table_full$steps, table_full$date, sum)
 ## histogram of the total number of steps taken each day after missing values
-hist(steps_total, main = "Histogram of the total number of steps taken each day (full data)", xlab = "Number of steps")
+hist(steps_total, 
+     main = "Histogram of the total number of steps taken each day (full data)",  
+     col = "#fef0d9",
+     xlab = "Number of steps")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
@@ -193,13 +198,13 @@ table_mean_median_full <- table_full %>%
 print.xtable(xtable(table_mean_median_full, 
                     caption = "The table with the missing data filled in", align = "cccc"),
              caption.placement = "top",
-             html.table.attributes="width= 400, border = 2", 
+             html.table.attributes="width= 400, border = 1", 
              type = "html")
 ```
 
 <!-- html table generated in R 3.1.3 by xtable 1.7-4 package -->
-<!-- Tue May 12 17:48:45 2015 -->
-<table width= 400, border = 2>
+<!-- Tue May 12 18:36:54 2015 -->
+<table width= 400, border = 1>
 <caption align="top"> The table with the missing data filled in </caption>
 <tr> <th>  </th> <th> date </th> <th> mean_steps </th> <th> median_steps </th>  </tr>
   <tr> <td align="center"> 1 </td> <td align="center"> 2012-10-01 </td> <td align="center"> 37.38 </td> <td align="center"> 34.11 </td> </tr>
