@@ -1,8 +1,8 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
+title: 'Reproducible Research: Peer Assessment 1'
+output:
   html_document:
-    keep_md: true
+    keep_md: yes
 ---
 
 ## Loading and preprocessing the data
@@ -21,6 +21,7 @@ steps_total <- tapply(table_nonNA$steps, table_nonNA$date, sum)
 par(mfrow = c(1, 1))
 hist(steps_total, 
      main = "Histogram of the total number of steps taken each day (missing NA)", 
+     col = "#fef0d9",
      xlab = "Number of steps")
 ```
 
@@ -38,8 +39,7 @@ library(xtable)
 print.xtable(xtable(table_mean_median, 
                     caption = "The table includes days with NA-data (marked '--')", align = "cccc"),
              NA.string = "--",
-             caption.placement = "top",
-             html.table.attributes="width= 400, border = 2", 
+             caption.placement = "top", 
              type = "html")
 ```
 ---
@@ -53,7 +53,8 @@ table_interval <- table_nonNA %>%
       summarize(mean_steps = mean(steps, na.rm = TRUE)) 
 ## plot
 plot(table_interval$interval, table_interval$mean_steps,
-     type = "l",
+     type = "l", 
+     col = "blue",
      main = "5-minute interval and the average number of steps taken (missing NA)",
      ylab = "Steps taken (averaged across all days)", 
      xlab = "5-minute interval")
@@ -99,7 +100,10 @@ table_full$steps[is.na(table$steps)] <- data_vector
 ```{r, cache=TRUE}
 steps_total <- tapply(table_full$steps, table_full$date, sum)
 ## histogram of the total number of steps taken each day after missing values
-hist(steps_total, main = "Histogram of the total number of steps taken each day (full data)", xlab = "Number of steps")
+hist(steps_total, 
+     main = "Histogram of the total number of steps taken each day (full data)",  
+     col = "#fef0d9",
+     xlab = "Number of steps")
 ```
 
 ```{r, results ='asis'}
@@ -114,7 +118,7 @@ table_mean_median_full <- table_full %>%
 print.xtable(xtable(table_mean_median_full, 
                     caption = "The table with the missing data filled in", align = "cccc"),
              caption.placement = "top",
-             html.table.attributes="width= 400, border = 2", 
+             html.table.attributes="width= 400", 
              type = "html")
 ```
 
