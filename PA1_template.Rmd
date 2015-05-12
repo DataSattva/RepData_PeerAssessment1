@@ -39,7 +39,7 @@ library(xtable)
 print.xtable(xtable(table_mean_median, 
                     caption = "The table includes days with NA-data (marked '--')", align = "cccc"),
              NA.string = "--",
-             caption.placement = "top", 
+             caption.placement = "top",
              type = "html")
 ```
 ---
