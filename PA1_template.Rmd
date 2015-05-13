@@ -132,7 +132,11 @@ table_nonNA$date <- as.Date(table_nonNA$date)
 table_nonNA$weeks <-  sapply(table_nonNA$date, weekdays)
 
 ## identifying the days of the week (both "weekend" and "weekday")
-table_nonNA$weekdays <- sapply(1:nrow(table_nonNA), function(x) {if ((table_nonNA$weeks[x] == "Sunday")|(table_nonNA$weeks[x] == "Saturday")) "weekend" else "weekday" })
+table_nonNA$weekdays <- sapply(1:nrow(table_nonNA), 
+                               function(x) {
+                                     if ((table_nonNA$weeks[x] == "Sunday")
+                                         |(table_nonNA$weeks[x] == "Saturday")) "weekend" 
+                                     else "weekday" })
 
 table_nonNA$weekdays <- as.factor(table_nonNA$weekdays)
 
